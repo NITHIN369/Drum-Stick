@@ -1,32 +1,3 @@
-/*document.querySelectorAll('button')[0].addEventListener('click',function (){
-    var a=new Audio('sounds/crash.mp3');
-    a.play();
-});
-document.querySelectorAll('button')[1].addEventListener('click',function(){
-    var a=new Audio('sounds/kick-bass.mp3');
-    a.play();
-});
-
-document.querySelectorAll('button')[2].addEventListener('click',function(){
-    var a=new Audio('sounds/snare.mp3');
-    a.play();
-});
-document.querySelectorAll('button')[3].addEventListener('click',function(){
-    var a=new Audio('sounds/tom-1.mp3');
-    a.play();
-});
-document.querySelectorAll('button')[4].addEventListener('click',function(){
-    var a=new Audio('sounds/tom-2.mp3');
-    a.play();
-});
-document.querySelectorAll('button')[5].addEventListener('click',function(){
-    var a=new Audio('sounds/tom-3.mp3');
-    a.play();
-});
-document.querySelectorAll('button')[6].addEventListener('click',function(){
-    var a=new Audio('sounds/tom-4.mp3');
-    a.play();
-});*/
 function ch(z){
     switch(z){
         case 'w':
@@ -62,9 +33,16 @@ function ch(z){
 for(var i=0;i<document.querySelectorAll('button').length;i++){
     document.querySelectorAll('button')[i].addEventListener('click',function (){
         ch(this.innerHTML);
+        animationForButton(this.innerHTML);
     });
 }
 
 var t=document.addEventListener('keypress',function (event) {
     ch(event.key);
+    animationForButton(event.key);
 });
+function animationForButton(btn){
+    document.querySelector('.'+btn).classList.add('pressed');
+    setTimeout(function (){
+        document.querySelector('.'+btn).classList.remove('pressed');},200);
+}
